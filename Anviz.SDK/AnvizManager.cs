@@ -288,7 +288,10 @@ namespace Anviz.SDK
 
         public bool ClearNewRecords()
         {
-            byte[] data = new byte[] { 1 };
+            byte package = (byte)(1);   //  1 - Clear all the new Records sign.
+                                         // 2 - Clear the designated amount new records sign,
+            byte[] data = new byte[] { package, 12 };
+            //byte[] data = new byte[] { 1 };
             byte[] response = SendCommand(CLEAR_NEW_RECORDS, deviceId, data, 4);
             if (response != null)
             {
